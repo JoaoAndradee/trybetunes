@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import LoadingText from './LoadingText';
+import getMusics from '../services/musicsAPI';
 
 class MusicCard extends React.Component {
   state = {
@@ -28,7 +28,9 @@ class MusicCard extends React.Component {
               this.setState({
                 loading: true,
               }, async () => {
-                await addSong();
+                const teste = await getMusics();
+                await teste.forEach((item) => addSong(item));
+                getFavoriteSongs();
                 this.setState({
                   loading: false,
                 });
