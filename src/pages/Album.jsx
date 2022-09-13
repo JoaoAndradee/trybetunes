@@ -35,7 +35,11 @@ class Album extends React.Component {
         <p data-testid="album-name">{`Album: ${collection}`}</p>
         { meuArray.map((item, index) => (
           <li key={ index }>
-            <MusicCard name={ item.trackName } previewMusic={ item.previewUrl } />
+            <MusicCard
+              name={ item.trackName }
+              previewMusic={ item.previewUrl }
+              trackId={ item.trackId }
+            />
           </li>
         ))}
       </div>
